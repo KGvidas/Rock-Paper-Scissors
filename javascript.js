@@ -25,9 +25,10 @@ function playRound(playerSelection, computerSelection) {
 }
 
  
-const playerSelection = "rock";
+let playerSelection = prompt("Choose between Rock, Paper and Scissors").toLowerCase();
 console.log("Player choice is: " + playerSelection);
 
 const computerSelection = getComputerChoice();
-console.log("Computer choise is: " + computerSelection);
+console.log("Computer choice is: " + computerSelection);
+
 console.log(playRound(playerSelection, computerSelection));
