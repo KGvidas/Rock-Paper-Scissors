@@ -32,7 +32,7 @@ let playerWins = 0;
 let computerWins = 0;
 
 function game() {
-  while (playerWins < 5 || computerWins < 5) {
+  while (playerWins < 2 && computerWins < 2) {
   let playerSelection = prompt("Choose between Rock, Paper and Scissors").toLowerCase();
   console.log("Player choice is: " + playerSelection);
   let computerSelection = getComputerChoice();
@@ -41,6 +41,11 @@ function game() {
   playRound(playerSelection, computerSelection);
   console.log("Player has: " + playerWins + " wins");
   console.log("Computer has " + computerWins + " wins");
+} 
+  if (playerWins === 2) {
+  alert("Congratz you won!");
+} else if (computerWins === 2) {
+  alert("Wow you lost!");
 }
 }
 game();
