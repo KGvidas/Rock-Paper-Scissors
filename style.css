@@ -64,9 +64,14 @@ h3 {
     font-size: 32px;
     flex-wrap: wrap;
     padding: 30px 30px 15px 30px;
+
 }
 .player-choice {
     padding: 30px;
+ 
+}
+.min-width {
+    min-width: 160px;
 }
 .computer-choice {
     padding: 30px;
