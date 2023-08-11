@@ -33,7 +33,6 @@ main {
     display: flex;
     flex-direction: column;
     flex: 1;
-    justify-content: center;
     align-items: center;
     align-content: center;
 }
@@ -81,6 +80,7 @@ h3 {
     gap: 100px;
 }
 button {
+    min-width: 180px;
     padding: 45px;
     border-radius: 12px;
     background-color: #393e46;
