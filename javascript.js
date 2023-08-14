@@ -97,6 +97,10 @@ function playRound(playerSelection, computerSelection) {
       // Score box updated 
     playerWins++;
     document.getElementById('playerScore').textContent = `${playerWins}`
+      // choice box updated
+      document.getElementById('plyrChoice').textContent = `${playerSelection}`
+      document.getElementById('cmptrChoice').textContent = `${computerSelection}`
+  
   } else if (
   (playerSelection === "Rock" && computerSelection === "Paper") ||
   (playerSelection === "Paper" && computerSelection === "Scissors") ||
@@ -108,10 +112,16 @@ function playRound(playerSelection, computerSelection) {
     // Score box updated 
     computerWins++;
     document.getElementById('computerScore').textContent = `${computerWins}`
+      // choice box updated
+      document.getElementById('plyrChoice').textContent = `${playerSelection}`
+      document.getElementById('cmptrChoice').textContent = `${computerSelection}`
   } else {
      // Outcome box updated
   document.getElementById('outcome').textContent = "It's a tie!";
   document.getElementById('outcomeExplained').textContent = `${playerSelection} and 
   ${computerSelection}`
+    // choice box updated
+    document.getElementById('plyrChoice').textContent = `${playerSelection}`
+    document.getElementById('cmptrChoice').textContent = `${computerSelection}`
   } 
 }
