@@ -75,6 +75,13 @@ buttons.forEach((button) => {
     const playerSelection = button.id; // Get the id of the clicked button
     const computerSelection = getComputerChoice(); // Get computer's choice
     playRound(playerSelection, computerSelection); // Call playRound function
+    
+    // Check for game end condition
+    if (playerWins === 5) {
+      alert("Congrats, you won!");
+    } else if (computerWins === 5) {
+      alert("Wow, you lost!");
+    }
   });
 });
 
@@ -124,4 +131,15 @@ function playRound(playerSelection, computerSelection) {
     document.getElementById('plyrChoice').textContent = `${playerSelection}`
     document.getElementById('cmptrChoice').textContent = `${computerSelection}`
   } 
+}
+
+function game() {
+  while (playerWins < 5 && computerWins < 5) {
+    playRound(playerSelection, computerSelection);
+  }  
+  if (playerWins === 5) {
+  alert("Congratz you won!");
+  } else if (computerWins === 5) {
+  alert("Wow you lost!");
+  }
 }
