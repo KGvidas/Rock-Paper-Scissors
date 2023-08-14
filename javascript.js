@@ -78,8 +78,9 @@ buttons.forEach((button) => {
   });
 });
 
+
 function getComputerChoice() {
-  const choices = ["rock", "paper", "scissors"];
+  const choices = ["Rock", "Paper", "Scissors"];
   let randomNumber = Math.floor(Math.random() * choices.length);
   let computerChoice = choices[randomNumber];
   return computerChoice;
@@ -87,9 +88,9 @@ function getComputerChoice() {
 
 function playRound(playerSelection, computerSelection) {
   if ( 
-  (playerSelection === "rock" && computerSelection === "scissors") ||
-  (playerSelection === "paper" && computerSelection === "rock") ||
-  (playerSelection === "scissors" && computerSelection === "paper")
+  (playerSelection === "Rock" && computerSelection === "Scissors") ||
+  (playerSelection === "Paper" && computerSelection === "Rock") ||
+  (playerSelection === "Scissors" && computerSelection === "Paper")
   ){   // Outcome box updated
     document.getElementById('outcome').textContent = 'You win!';
     document.getElementById('outcomeExplained').textContent = `${playerSelection} beats ${computerSelection}`;
@@ -97,9 +98,9 @@ function playRound(playerSelection, computerSelection) {
     playerWins++;
     document.getElementById('playerScore').textContent = `${playerWins}`
   } else if (
-  (playerSelection === "rock" && computerSelection === "paper") ||
-  (playerSelection === "paper" && computerSelection === "scissors") ||
-  (playerSelection === "scissors" && computerSelection === "rock")
+  (playerSelection === "Rock" && computerSelection === "Paper") ||
+  (playerSelection === "Paper" && computerSelection === "Scissors") ||
+  (playerSelection === "Scissors" && computerSelection === "Rock")
   ) { 
     // Outcome box updated
     document.getElementById('outcome').textContent = 'You lose!';
