@@ -86,23 +86,27 @@ function getComputerChoice() {
 }
 
 function playRound(playerSelection, computerSelection) {
-  if (
+  if ( 
   (playerSelection === "rock" && computerSelection === "scissors") ||
   (playerSelection === "paper" && computerSelection === "rock") ||
   (playerSelection === "scissors" && computerSelection === "paper")
-  ){
-
+  ){   // Outcome box updated
     document.getElementById('outcome').textContent = 'You win!';
     document.getElementById('outcomeExplained').textContent = `${playerSelection} beats ${computerSelection}`;
-
+      // Score box updated 
     playerWins++;
+    document.getElementById('playerScore').textContent = `${playerWins}`
   } else if (
   (playerSelection === "rock" && computerSelection === "paper") ||
   (playerSelection === "paper" && computerSelection === "scissors") ||
   (playerSelection === "scissors" && computerSelection === "rock")
   ) { 
-    console.log("You lose! " + computerSelection + " beats " + playerSelection);
+    // Outcome box updated
+    document.getElementById('outcome').textContent = 'You lose!';
+    document.getElementById('outcomeExplained').textContent = `${computerSelection} beats ${playerSelection}`;
+    // Score box updated 
     computerWins++;
+    document.getElementById('computerScore').textContent = `${computerWins}`
   } else {
     console.log("It's a tie! " + computerSelection + " and " + playerSelection);
   } 
