@@ -91,7 +91,10 @@ function playRound(playerSelection, computerSelection) {
   (playerSelection === "paper" && computerSelection === "rock") ||
   (playerSelection === "scissors" && computerSelection === "paper")
   ){
-    console.log("You win! " + playerSelection + " beats " + computerSelection);
+
+    document.getElementById('outcome').textContent = 'You win!';
+    document.getElementById('outcomeExplained').textContent = `${playerSelection} beats ${computerSelection}`;
+
     playerWins++;
   } else if (
   (playerSelection === "rock" && computerSelection === "paper") ||
