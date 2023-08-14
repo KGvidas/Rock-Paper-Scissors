@@ -108,9 +108,9 @@ function playRound(playerSelection, computerSelection) {
     computerWins++;
     document.getElementById('computerScore').textContent = `${computerWins}`
   } else {
-    console.log("It's a tie! " + computerSelection + " and " + playerSelection);
+     // Outcome box updated
+  document.getElementById('outcome').textContent = "It's a tie!";
+  document.getElementById('outcomeExplained').textContent = `${playerSelection} and 
+  ${computerSelection}`
   } 
-console.log("Player has: " + playerWins + " wins");
-console.log("Computer has " + computerWins + " wins");
 }
-
