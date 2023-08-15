@@ -143,3 +143,18 @@ function game() {
   alert("Wow you lost!");
   }
 }
+
+// Improving Code Organization:
+// Consider improving the organization of your code by separating the game logic from the UI updates. You could have separate functions for updating the scores, displaying choices, and displaying the outcome. This would make your code more modular and easier to understand.
+
+// Using HTML to Display Game Information:
+// You might want to use HTML to display game information rather than using alerts. For example, you could have a separate element on your webpage to display the game status, such as who won and the current score. This would provide a better user experience.
+
+// Minor Code Simplifications:
+// You could simplify the way you update the text content by using a single function for updating both player and computer choices, as well as the outcome explanations.
+
+//mobile layout
+
+//responsivness
+
+//img

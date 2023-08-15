@@ -66,22 +66,8 @@ h3 {
     padding: 30px 30px 15px 30px;
 
 }
-@media only screen and (max-width: 615px) {
-    .container-choices {
-        justify-content: center;
-        flex-wrap: wrap;
-        margin: auto;
-        gap: 0px;
-        padding: 0px;
-    }
-#choices {
-        gap: 20px !important;
-    }
-}
-
 .player-choice {
     padding: 30px;
- 
 }
 .min-width {
     min-width: 160px;
@@ -112,4 +98,60 @@ footer {
     color: #ddd;
     height: 2.5rem;
     font-size: 24px;      
+}
+
+/* Media Queries */
+@media only screen and (max-width: 615px) {
+    .container-choices {
+        justify-content: center;
+        flex-wrap: wrap;
+        margin: auto;
+        gap: 0px;
+        padding: 0px;
+    }
+#choices {
+        gap: 20px !important;
+    }
+}
+@media only screen and (max-width: 445px) {
+header {
+    padding: 5px;
+}
+header h1{
+    font-size: 28px;
+}
+.result {
+    margin-top: 0px;
+}
+#outcome {
+    font-size: 32px;
+}
+#outcomeExplained {
+    font-size: 24px;
+}
+.container-choices{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0px;
+    font-size: 24px;
+}
+.player-choice{
+    padding: 0px;
+    padding-right: 5%;
+}
+.computer-choice{
+    padding: 0px;
+}
+.img-plchdr{
+    padding: 15%;
+    margin-bottom: 5%;
+}
+button {
+    font-size: 24px;
+    margin-top: 10%;
+    padding: 7%;
+}
+
 }
