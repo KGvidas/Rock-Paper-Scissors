@@ -5,8 +5,11 @@ let computerWins = 0;
 let roundWinner;
 let playerScore =  document.getElementById('playerScore');
 let computerScore = document.getElementById('computerScore');
-let outcome = document.getElementById('outcome')
-let outcomeExplained =  document.getElementById('outcomeExplained')
+let outcome = document.getElementById('outcome');
+let outcomeExplained =  document.getElementById('outcomeExplained');
+let playerChose = document.getElementById('plyrChoice');
+let computerChose =  document.getElementById('cmptrChoice');
+
 
 const buttons = document.querySelectorAll('.play');
 buttons.forEach((button) => {
@@ -14,11 +17,10 @@ buttons.forEach((button) => {
     const playerSelection = button.id; // Get the id of the clicked button
     const computerSelection = getComputerChoice(); // Get computer's choice
     playRound(playerSelection, computerSelection); // Call playRound function
+    updateUI(playerSelection, computerSelection)
     checkForGameOver(); 
-    UpdateOutcomeSection(playerSelection, computerSelection); // Pass both selections here
   });
 });
-
 
 function getComputerChoice() {
   const choices = ["Rock", "Paper", "Scissors"];
@@ -26,7 +28,6 @@ function getComputerChoice() {
   let computerChoice = choices[randomNumber];
   return computerChoice;
 }
-
 
 function playRound(playerSelection, computerSelection) {
   if ( 
@@ -36,9 +37,6 @@ function playRound(playerSelection, computerSelection) {
   ){  
     roundWinner = "player";
     playerWins++;
-      // choice box updated
-      document.getElementById('plyrChoice').textContent = `${playerSelection}`
-      document.getElementById('cmptrChoice').textContent = `${computerSelection}`
   } else if (
   (playerSelection === "Rock" && computerSelection === "Paper") ||
   (playerSelection === "Paper" && computerSelection === "Scissors") ||
@@ -46,24 +44,23 @@ function playRound(playerSelection, computerSelection) {
   ) { 
     roundWinner = "computer";
     computerWins++;
-      // choice box updated
-      document.getElementById('plyrChoice').textContent = `${playerSelection}`
-      document.getElementById('cmptrChoice').textContent = `${computerSelection}`
   } else {
     roundWinner = "tie";
-    // choice box updated
-    document.getElementById('plyrChoice').textContent = `${playerSelection}`
-    document.getElementById('cmptrChoice').textContent = `${computerSelection}`
   } 
 }
 
-restartGamebtn = document.getElementById('restartGame')
-restartGamebtn.addEventListener('click', playAgain);
-
+function checkForGameOver(){
+  if (playerWins === 5 || computerWins === 5) {
+    gameIsOver()
+  }
+};
 
 function gameIsOver() {
   document.getElementById("overlay").style.display = "block";
 }
+
+restartGamebtn = document.getElementById('restartGame')
+restartGamebtn.addEventListener('click', playAgain);
 
 function playAgain() {
   document.getElementById("overlay").style.display = "none";
@@ -75,10 +72,10 @@ function playAgain() {
   computerScore.textContent = '0';
 }
 
-function checkForGameOver(){
-  if (playerWins === 5 || computerWins === 5) {
-    gameIsOver()
-  }
+// UI UPDATE FUNCTIONS 
+function updateUI(playerSelection, computerSelection) {
+  UpdateOutcomeSection(playerSelection, computerSelection);
+  UpdateChoiceSection(playerSelection, computerSelection);
 };
 
 function UpdateOutcomeSection(playerSelection, computerSelection) {
@@ -96,3 +93,7 @@ function UpdateOutcomeSection(playerSelection, computerSelection) {
   }
 }
 
+function UpdateChoiceSection(playerSelection, computerSelection){
+  playerChose.textContent = `${playerSelection}`
+  computerChose.textContent = `${computerSelection}`
+}
