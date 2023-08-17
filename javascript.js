@@ -1,21 +1,21 @@
 let playerWins = 0;
 let computerWins = 0;
 
+
+let roundWinner;
+let playerScore =  document.getElementById('playerScore');
+let computerScore = document.getElementById('computerScore');
+let outcome = document.getElementById('outcome')
+let outcomeExplained =  document.getElementById('outcomeExplained')
+
 const buttons = document.querySelectorAll('.play');
 buttons.forEach((button) => {
   button.addEventListener('click', () => {
     const playerSelection = button.id; // Get the id of the clicked button
     const computerSelection = getComputerChoice(); // Get computer's choice
     playRound(playerSelection, computerSelection); // Call playRound function
-    
-    // Check for game end condition
-    if (playerWins === 5) {
-      alert("Congrats, you won!");
-      gameIsOver();
-    } else if (computerWins === 5) {
-      alert("Wow, you lost!");
-      gameIsOver();
-    }
+    checkForGameOver(); 
+    UpdateOutcomeSection(playerSelection, computerSelection); // Pass both selections here
   });
 });
 
@@ -27,48 +27,38 @@ function getComputerChoice() {
   return computerChoice;
 }
 
+
 function playRound(playerSelection, computerSelection) {
   if ( 
   (playerSelection === "Rock" && computerSelection === "Scissors") ||
   (playerSelection === "Paper" && computerSelection === "Rock") ||
   (playerSelection === "Scissors" && computerSelection === "Paper")
-  ){   // Outcome box updated
-    document.getElementById('outcome').textContent = 'You win!';
-    document.getElementById('outcomeExplained').textContent = `${playerSelection} beats ${computerSelection}`;
-      // Score box updated 
+  ){  
+    roundWinner = "player";
     playerWins++;
-    document.getElementById('playerScore').textContent = `${playerWins}`
       // choice box updated
       document.getElementById('plyrChoice').textContent = `${playerSelection}`
       document.getElementById('cmptrChoice').textContent = `${computerSelection}`
-  
   } else if (
   (playerSelection === "Rock" && computerSelection === "Paper") ||
   (playerSelection === "Paper" && computerSelection === "Scissors") ||
   (playerSelection === "Scissors" && computerSelection === "Rock")
   ) { 
-    // Outcome box updated
-    document.getElementById('outcome').textContent = 'You lose!';
-    document.getElementById('outcomeExplained').textContent = `${computerSelection} beats ${playerSelection}`;
-    // Score box updated 
+    roundWinner = "computer";
     computerWins++;
-    document.getElementById('computerScore').textContent = `${computerWins}`
       // choice box updated
       document.getElementById('plyrChoice').textContent = `${playerSelection}`
       document.getElementById('cmptrChoice').textContent = `${computerSelection}`
   } else {
-     // Outcome box updated
-  document.getElementById('outcome').textContent = "It's a tie!";
-  document.getElementById('outcomeExplained').textContent = `${playerSelection} and 
-  ${computerSelection}`
+    roundWinner = "tie";
     // choice box updated
     document.getElementById('plyrChoice').textContent = `${playerSelection}`
     document.getElementById('cmptrChoice').textContent = `${computerSelection}`
   } 
 }
 
-gameOverbtn = document.getElementById('text')
-gameOverbtn.addEventListener('click', playAgain);
+restartGamebtn = document.getElementById('restartGame')
+restartGamebtn.addEventListener('click', playAgain);
 
 
 function gameIsOver() {
@@ -77,7 +67,37 @@ function gameIsOver() {
 
 function playAgain() {
   document.getElementById("overlay").style.display = "none";
+  outcome.textContent = "Choose your weapon";
+  outcomeExplained.textContent = "First to score 5 points wins the game";
+  playerWins = 0; 
+  computerWins = 0; 
+  playerScore.textContent = '0';
+  computerScore.textContent = '0';
 }
+
+function checkForGameOver(){
+  if (playerWins === 5 || computerWins === 5) {
+    gameIsOver()
+  }
+};
+
+function UpdateOutcomeSection(playerSelection, computerSelection) {
+  if (roundWinner == "player") {
+    outcome.textContent = 'You win!';
+    outcomeExplained.textContent = `${playerSelection} beats ${computerSelection}`;
+    playerScore.textContent = `${playerWins}`;
+  } else if (roundWinner == "computer") {
+    outcome.textContent = 'You lose!';
+    outcomeExplained.textContent = `${computerSelection} beats ${playerSelection}`;
+    computerScore.textContent = `${computerWins}`;
+  } else {
+    outcome.textContent = "It's a tie!";
+    outcomeExplained.textContent = `${playerSelection} and ${computerSelection}`;
+  }
+}
+
+
+
 
 // Improving Code Organization:
 // Consider improving the organization of your code by separating the game logic from the UI updates. You could have separate functions for updating the scores, displaying choices, and displaying the outcome. This would make your code more modular and easier to understand.
