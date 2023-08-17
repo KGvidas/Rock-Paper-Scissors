@@ -91,6 +91,10 @@ button {
     color: #ddd;
     font-size: 24px;
 }
+button:hover {
+    background-color: #4a4f57;
+    transform: scale(1.1);
+}
 
 /* Footer */
 footer { 

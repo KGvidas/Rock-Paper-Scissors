@@ -93,3 +93,5 @@ function playAgain() {
 //responsivness
 
 //img
+
+// let: roundWinner , func (updateRoundOutcome); func (gameOver); func (declareWinner)
